@@ -1,0 +1,14 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#clock,
+#date {
+  font-size: 6em;
+  color: crimson;
+  font-weight: lighter;
+}
