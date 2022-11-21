@@ -1,8 +1,5 @@
-#app {
-}
-
 .completed {
-	font-style: italic;
-	text-decoration: line-through;
-	color: #888;
+    font-style: italic;
+    text-decoration: line-through;
+    color: #888;
 }
