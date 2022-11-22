@@ -37,7 +37,7 @@ const highscoreEl = document.querySelector('#highscore');
 // Get a random number between 1-10
 const getRandomNumber = (max = 10) => Math.ceil(Math.random() * max);
 // Update highscore in html
-const updateHighscore = () => {
+const updateHighscore = (attempts) => {
     highscore = attempts;
     highscoreEl.textContent = `Highscore: ${highscore}`;
 };
@@ -53,6 +53,7 @@ const resetForm = () => {
 let answer = getRandomNumber();
 let attempts = 0;
 let highscore = false;
+let guessedNumbers = [];
 
 // cheatEl.textContent = answer;
 
@@ -62,8 +63,10 @@ formGuessEl.addEventListener('submit', e => {
     let guess = Number(inputGuessEl.value);
     let resultText;
 
+    guessedNumbers.push(guess);
+
     // only if a number is entered
-    if (guess) {
+    if (guess && guessedNumbers.includes(guess)) {
         attempts++;
         attemptsEl.textContent = `Attempts: ${attempts}`;
 
@@ -73,11 +76,11 @@ formGuessEl.addEventListener('submit', e => {
 
             if (highscore) {
                 if (attempts < highscore) {
-                    updateHighscore();
+                    updateHighscore(attempts);
                 }
             }
             else {
-                updateHighscore();
+                updateHighscore(attempts);
             }
         }
         else if (guess > answer) {
