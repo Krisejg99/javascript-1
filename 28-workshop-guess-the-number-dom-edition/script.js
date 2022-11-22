@@ -27,7 +27,7 @@
  *
  */
 
-const cheatEl = document.querySelector('#cheat');
+// const cheatEl = document.querySelector('#cheat');
 const formGuessEl = document.querySelector('#formGuess');
 const inputGuessEl = document.querySelector('#inputGuess');
 const resultEl = document.querySelector('#result');
@@ -36,16 +36,25 @@ const highscoreEl = document.querySelector('#highscore');
 
 // Get a random number between 1-10
 const getRandomNumber = (max = 10) => Math.ceil(Math.random() * max);
+// Update highscore in html
 const updateHighscore = () => {
     highscore = attempts;
     highscoreEl.textContent = `Highscore: ${highscore}`;
-}
+};
+// Reset values for a new game
+const resetForm = () => {
+    attempts = 0;
+    inputGuessEl.value = '';
+    resultEl.textContent = '';
+    attemptsEl.textContent = '';
+    formGuessEl.submit.disabled = false;
+};
 
 let answer = getRandomNumber();
 let attempts = 0;
 let highscore = false;
 
-cheatEl.textContent = answer;
+// cheatEl.textContent = answer;
 
 formGuessEl.addEventListener('submit', e => {
     e.preventDefault();
@@ -60,7 +69,7 @@ formGuessEl.addEventListener('submit', e => {
 
         if (guess === answer) {
             resultText = 'Correct!';
-            // attemptsEl.textContent = `Attempts: ${attempts}`;
+            formGuessEl.submit.disabled = true;
 
             if (highscore) {
                 if (attempts < highscore) {
@@ -82,15 +91,13 @@ formGuessEl.addEventListener('submit', e => {
     }
 });
 
-formGuessEl.restart.addEventListener('click', e => {
-    e.preventDefault();
-
+formGuessEl.addEventListener('reset', e => {
     answer = getRandomNumber();
-    attempts = 0;
+    // cheatEl.textContent = answer;
+    resetForm();
+});
 
-    inputGuessEl.value = '';
-    resultEl.textContent = '';
-    attemptsEl.textContent = '';
-
-    cheatEl.textContent = answer;
+formGuessEl.giveUp.addEventListener('click', e => {
+    formGuessEl.submit.disabled = true;
+    resultEl.textContent = `Answer was: ${answer}\nGoodbye.`;
 });
