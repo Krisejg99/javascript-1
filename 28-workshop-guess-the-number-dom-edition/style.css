@@ -8,9 +8,10 @@ body {
     font-weight: 400;
 }
 
-#top {
+#app {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
 #cheat {
@@ -21,4 +22,8 @@ body {
 
 #formGuess label {
     margin-bottom: 0.25rem;
+}
+
+.guess-div {
+    width: 100%;
 }

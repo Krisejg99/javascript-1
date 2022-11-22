@@ -50,7 +50,7 @@ cheatEl.textContent = answer;
 formGuessEl.addEventListener('submit', e => {
     e.preventDefault();
 
-    let guess = inputGuessEl.value;
+    let guess = Number(inputGuessEl.value);
     let resultText;
 
     // only if a number is entered
@@ -58,7 +58,7 @@ formGuessEl.addEventListener('submit', e => {
         attempts++;
         attemptsEl.textContent = `Attempts: ${attempts}`;
 
-        if (guess == answer) {
+        if (guess === answer) {
             resultText = 'Correct!';
             // attemptsEl.textContent = `Attempts: ${attempts}`;
 
