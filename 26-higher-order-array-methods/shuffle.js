@@ -30,5 +30,16 @@ const shuffleArray = (array) => {
     }
 }
 
-shuffleArray(numbers);
-console.log("Numbers after proper shuffling:", numbers);
+// shuffleArray(numbers);
+// console.log("Numbers after proper shuffling:", numbers);
+
+console.log(numbers);
+
+const newNumbers = numbers.map(number => number);
+
+shuffleArray(newNumbers);
+console.log(newNumbers);
+
+const shuffledNumbers4 = newNumbers.slice(0, 4);
+console.log(shuffledNumbers4);
+
