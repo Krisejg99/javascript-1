@@ -15,12 +15,12 @@ const getRandomNumber = () => {
 btnScareMe.addEventListener('click', () => {
 
     btnScareMe.classList.add('hide');
-    setTimeout( () => {
+    setTimeout(() => {
 
         ghostEl.classList.remove('hide');
 
-        setTimeout( () => {
-        
+        setTimeout(() => {
+
             ghostEl.classList.add('hide');
             btnScareMe.classList.remove('hide');
         }, 3000);
