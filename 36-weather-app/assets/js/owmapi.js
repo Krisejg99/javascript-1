@@ -6,7 +6,7 @@ const API_KEY = "3af4f9314712aaa35abae79714a0e18d";
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 const FAKE_SLOW_API = true;
-const FAKE_SLOW_API_DELAY = 3000;
+const FAKE_SLOW_API_DELAY = 2000;
 
 const getCurrentWeather = async (city) => {
     // get weather for city from OpenWeatherMap API
@@ -22,6 +22,7 @@ const getCurrentWeather = async (city) => {
 
     // convert response from JSON
     const data = await response.json();
+    // console.log(data);
 
     // return current weather
     return data;

@@ -3,26 +3,31 @@
  */
 
 body {
-	background-color: #efefef;
-	color: #333;
-	line-height: 1.5;
+    background-color: #efefef;
+    color: #333;
+    line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin-top: 0.5em;
-	margin-bottom: 0.75em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0.5em;
+    margin-bottom: 0.75em;
 }
 
 #app {
-	margin-top: 1.5rem;
-	margin-bottom: 1.5rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hide {
-	display: none;
+    display: none;
 }
 
 /**
@@ -30,9 +35,9 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 #search-wrapper {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
 /**
@@ -40,36 +45,37 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 #forecast {
-	text-align: center;
-	max-width: 90vw;
-	width: 50vmax;
+    text-align: center;
+    max-width: 90vw;
+    width: 50vmax;
+    max-width: 400px;
 }
 
 #forecast #location {
-	font-size: 1.2em;
-	text-transform: uppercase;
+    font-size: 1.2em;
+    text-transform: uppercase;
 }
 
 #forecast #country {
-	background-color: #ddd;
-	padding: 0.25rem 0.5rem;
+    background-color: #ddd;
+    padding: 0.25rem 0.5rem;
 }
 
 #forecast .temp {
-	font-size: 2em;
+    font-size: 2em;
 }
 
 #forecast .wind {
-	font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 #forecast ul.conditions {
-	display: flex;
-	list-style: none;
-	justify-content: center;
-	margin-bottom: 1.5rem;
-	padding: 0;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    padding: 0;
 }
 #forecast ul.conditions li {
-	flex: 0;
+    flex: 0;
 }
