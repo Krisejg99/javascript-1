@@ -117,7 +117,7 @@ todosEl.addEventListener('click', async (e) => {
 
         // get updated todos
         getTodos();
-    }; 
+    };
 });
 
 // Create a new todo when form is submitted
