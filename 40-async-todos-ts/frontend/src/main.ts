@@ -7,7 +7,7 @@ import './style.css'
  */
 
 interface ITodo {
-	id: number,
+	id?: number,
 	title: string,
 	completed: boolean
 }
@@ -35,8 +35,9 @@ const changeTodoCompleted = async (e: Event) => {
 
 	const todoId = Number(target.dataset.todoId)
 	const clickedTodo: ITodo = todos.find(todo => todo.id === todoId) as ITodo
+	const clickedId = clickedTodo.id as Number
 	
-	await updateTodo(clickedTodo.id, {
+	await updateTodo(clickedId, {
 		completed: !clickedTodo.completed
 	})
 }
@@ -86,7 +87,7 @@ const renderTodos = () => {
 
 }
 
-const updateTodo = async (todoId: number, data: object) => {
+const updateTodo = async (todoId: Number, data: Object) => {
 	const res = await fetch(`http://localhost:3001/todos/${todoId}`, {
 			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
@@ -117,11 +118,8 @@ document.querySelector('#new-todo-form')?.addEventListener('submit', async e => 
 	const newTodoTitle = newTodoEl.value
 	newTodoEl.value = ''
 
-	// Find the highest value ID from the list items. Create a new ID that is 1 more
-    const newTodoId = Math.max(...todos.map(todo => todo.id)) + 1
 
 	const newTodo: ITodo = {
-		id: newTodoId,
 		title: newTodoTitle,
 		completed: false
 	}
