@@ -3,17 +3,22 @@
     {
       "id": 1,
       "title": "Learn JavaScript",
-      "completed": false
+      "completed": true
     },
     {
       "id": 2,
       "title": "Learn async JavaScript",
-      "completed": false
+      "completed": true
     },
     {
       "id": 3,
       "title": "Fun with TypeScript",
-      "completed": true
+      "completed": false
+    },
+    {
+      "title": "Kill everyone MUAAHAHAHHA!",
+      "completed": false,
+      "id": 4
     }
   ]
 }

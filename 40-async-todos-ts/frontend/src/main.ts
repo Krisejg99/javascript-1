@@ -1,16 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import './style.css'
-
-
 /*************************************************************************************
- * INTERFACES
+ * IMPORTS
  */
 
-interface ITodo {
-	id?: number,
-	title: string,
-	completed: boolean
-}
+
+import { ITodo } from './interfaces.js'
+import { createTodo, fetchTodos, updateTodo } from './api.js'
+import 'bootstrap/dist/css/bootstrap.css'
+import './style.css'
 
 
 /*************************************************************************************
@@ -42,26 +38,6 @@ const changeTodoCompleted = async (e: Event) => {
 	})
 }
 
-const checkResponse = (res: Response) => {
-	if (!res.ok) throw new Error(`Could't fetch data, no response:, ${res.status} ${res.statusText}`)
-}
-
-const createNewTodo = async (newTodo: ITodo) => {
-	const res = await fetch('http://localhost:3001/todos', {
-		method: 'POST',
-		headers: {'Content-Type': 'application/json'},
-		body: JSON.stringify(newTodo),
-	})
-
-	checkResponse(res)
-}
-
-const fetchTodos = async () => {
-	const res = await fetch('http://localhost:3001/todos')
-	checkResponse(res)
-	return await res.json() as ITodo[]
-}
-
 const getTodos = async () => {
 	todos = await fetchTodos()
 	renderTodos()
@@ -85,18 +61,6 @@ const renderTodos = () => {
 	refreshTodos(todoListEl, false)
 	refreshTodos(completedTodoListEl, true)
 
-}
-
-const updateTodo = async (todoId: Number, data: Object) => {
-	const res = await fetch(`http://localhost:3001/todos/${todoId}`, {
-			method: 'PATCH',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(data),
-		})
-
-		checkResponse(res)
-
-		return await res.json();
 }
 
 
@@ -124,7 +88,7 @@ document.querySelector('#new-todo-form')?.addEventListener('submit', async e => 
 		completed: false
 	}
 
-	await createNewTodo(newTodo)
+	await createTodo(newTodo)
 
 	getTodos()
 })
