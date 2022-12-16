@@ -10,23 +10,9 @@ type Todo = {
     completed: boolean,
 }
 
-const todos: Todo[] = [
-    {
-		id: 1,
-		title: "Learn basic JavaScript",
-		completed: true,
-	},
-	{
-		id: 2,
-		title: "Learn advanced JavaScript",
-		completed: true,
-	},
-	{
-		id: 3,
-		title: "Learn basic TypeScript",
-		completed: false,
-	},
-]
+const json = localStorage.getItem('todos') ?? '[]'
+
+const todos: Todo[] = JSON.parse(json)
 
 const renderTodos = () => {
     todosListEl.innerHTML = ''
@@ -34,6 +20,10 @@ const renderTodos = () => {
     todosListEl.innerHTML = todos
         .map(todo => `<li class="list-group-item ${todo.completed ? 'completed' : ''}" data-todo-id="${todo.id}">${todo.title}</li>`)
         .join('')
+}
+
+const saveTodos = () => {
+    localStorage.setItem('todos', JSON.stringify(todos))
 }
 
 newTodoFormEl?.addEventListener('submit', e => {
@@ -47,7 +37,7 @@ newTodoFormEl?.addEventListener('submit', e => {
     if (!newTodoTitle) return
 
     // Find the highest value ID from the list items. Create a new ID that is 1 more
-    const newTodoId = Math.max(...todos.map(todo => todo.id)) + 1
+    const newTodoId = Math.max(0, ...todos.map(todo => todo.id)) + 1
 
     const newTodo: Todo = {
         id: newTodoId,
@@ -56,6 +46,9 @@ newTodoFormEl?.addEventListener('submit', e => {
     }
 
     todos.push(newTodo)
+    
+    saveTodos()
+
     renderTodos()
 })
 
@@ -72,7 +65,11 @@ todosListEl.addEventListener('click', e => {
 
     if (foundTodo) {
         foundTodo.completed = !foundTodo.completed
+
+        saveTodos()
     }
 
     renderTodos()
 })
+
+renderTodos()
