@@ -79,6 +79,8 @@ document.querySelector('#search-form').addEventListener('submit', async e => {
         return;
     }
 
+    localStorage.setItem('weather_city', city)
+
     displayResult(city);
 });
 
@@ -100,3 +102,5 @@ const displayResult = async (city) => {
 
     document.querySelector('#spinner').classList.add('hide');
 };
+
+document.querySelector('#query').value = localStorage.getItem('weather_city') ?? '';
